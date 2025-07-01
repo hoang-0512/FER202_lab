@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./NavBar.css";
 
 const NavBar = ({ onSearch }) => {
@@ -51,15 +52,15 @@ const NavBar = ({ onSearch }) => {
         </div>
 
         <div className="navbar__nav">
-          <button type="button" aria-label="Go to Home page">
+          <Link to="/" className="nav-link">
             Home
-          </button>
-          <button type="button" aria-label="Go to About page">
+          </Link>
+          <Link to="/about" className="nav-link">
             About
-          </button>
-          <button type="button" aria-label="Go to Contact page">
+          </Link>
+          <Link to="/contact" className="nav-link">
             Contact
-          </button>
+          </Link>
         </div>
 
         <div className="navbar__right">
