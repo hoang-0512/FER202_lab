@@ -1,0 +1,117 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f9f9f9; /* Light gray background */
+  display: flex;
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+h1 {
+  text-align: center;
+  margin: 20px 0;
+  color: #333;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* Add this to the relevant container styles */
+.container {
+  background-color: #ffffff; /* White background */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Dark mode styles cho toàn bộ trang */
+body.dark-mode {
+  background-color: #1a1a1a;
+  transition: background-color 0.3s ease;
+}
+
+body.dark-mode .chids-container {
+  background-color: #1a1a1a;
+}
+
+/* Preserve navbar blue color in both modes */
+.navbar {
+  background-color: #1e90ff !important;
+}
+
+.orchids-container {
+  transition: background-color 0.3s ease;
+  margin-top: 80px;
+  padding: 0;
+}
+body.dark-mode .orchids-grid {
+  background-color: #1a1a1a;
+  transition: background-color 0.1s ease;
+}
+/* Dark mode styles for content only */
+body.dark-mode .orchid-card {
+  background: #2d2d2d;
+  color: #ffffff;
+  border: 1px solid #333333;
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+  transition: all 0.1s ease;
+}
+/* Đảm bảo transition mượt mà cho container */
+body.dark-mode .orchids-container {
+  background-color: #1a1a1a;
+  transition: background-color 0.1s ease;
+}
+
+/* Giữ nguyên màu cho special và natural badges */
+body.dark-mode .orchid-card p.special {
+  color: #ff6b6b;
+}
+
+body.dark-mode .orchid-card p.natural {
+  color: #69db7c;
+}
+
+/* Trong App.css */
+* {
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}

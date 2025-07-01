@@ -1,0 +1,613 @@
+.orchids-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 80px 40px;
+  padding: 40px;
+  background-color: #f9f9f9;
+  transition: background-color 0.1s ease;
+}
+
+.orchid-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 25px 20px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-height: 450px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.orchid-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.orchid-image {
+  width: 100%;
+  height: 200px; 
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease;
+}
+
+.orchid-card:hover .orchid-image {
+  transform: scale(1.03);
+}
+
+.orchid-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 15px 0;
+  width: 100%;
+  height: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+
+.orchid-info {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.orchid-info p {
+  font-size: 0.95rem;
+  color: #555;
+  margin: 8px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.info-label {
+  font-weight: 600;
+  color: #4a4a4a;
+}
+
+.rating {
+  color: #f8b400;
+  font-weight: 500;
+}
+
+.orchid-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin: 15px 0;
+}
+
+.badge {
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.badge.special {
+  background-color: rgba(217, 83, 79, 0.1);
+  color: #d9534f;
+}
+
+.badge.natural {
+  background-color: rgba(92, 184, 92, 0.1);
+  color: #5cb85c;
+}
+
+.detail-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  width: 100%;
+  margin: 15px 0 10px 0;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(76, 175, 80, 0.3);
+}
+
+.detail-button:hover {
+  background-color: #3d9140;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(76, 175, 80, 0.4);
+}
+
+body.dark-mode {
+  background-color: #1a1a1a;
+}
+
+body.dark-mode .orchids-grid {
+  background-color: #1a1a1a;
+  transition: none;
+}
+
+body.dark-mode .orchid-card {
+  background: #2d2d2d;
+  color: #ffffff;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .orchid-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(145deg, #323232, #252525);
+}
+
+body.dark-mode .orchid-title {
+  color: #ffffff;
+}
+
+body.dark-mode .info-label {
+  color: #bebebe;
+}
+
+body.dark-mode .orchid-info p {
+  color: #e0e0e0;
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 900px;
+  position: relative;
+  animation: modalFadeIn 0.3s;
+  color: #333;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modal-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+}
+
+.modal-image-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-image {
+  width: 100%;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.modal-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 15px 0;
+}
+
+.modal-divider {
+  height: 3px;
+  width: 80px;
+  background-color: #4caf50;
+  margin-bottom: 25px;
+}
+
+.modal-detail-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.detail-label {
+  font-weight: 600;
+  color: #555;
+  font-size: 1.1rem;
+}
+
+.detail-value {
+  color: #333;
+  font-size: 1.1rem;
+}
+
+.detail-value.rating {
+  color: #f8b400;
+}
+
+.detail-value.likes {
+  color: #e74c3c;
+}
+
+.feature-badge {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.feature-badge.special {
+  background-color: rgba(217, 83, 79, 0.1);
+  color: #d9534f;
+}
+
+.feature-badge.natural {
+  background-color: rgba(92, 184, 92, 0.1);
+  color: #5cb85c;
+}
+
+.modal-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #555;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.modal-close:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.back-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 12px 16px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  margin-top: 25px;
+  font-size: 1rem;
+  font-weight: 500;
+  align-self: flex-start;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(76, 175, 80, 0.3);
+}
+
+.back-button:hover {
+  background-color: #3d9140;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(76, 175, 80, 0.4);
+}
+
+body.dark-mode .modal-content {
+  background: #2d2d2d;
+  color: #ffffff;
+}
+
+body.dark-mode .modal-title {
+  color: #ffffff;
+}
+
+body.dark-mode .modal-detail-item {
+  border-bottom-color: #444;
+}
+
+body.dark-mode .detail-label {
+  color: #bebebe;
+}
+
+body.dark-mode .detail-value {
+  color: #ffffff;
+}
+
+body.dark-mode .modal-close {
+  color: #bebebe;
+}
+
+body.dark-mode .modal-close:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Detail page styles */
+.orchid-detail-container {
+  padding: 40px;
+  margin-top: 80px;
+  min-height: calc(100vh - 80px);
+  background-color: #f9f9f9;
+  transition: background-color 0.1s ease;
+}
+
+body.dark-mode .orchid-detail-container {
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.orchid-detail-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 40px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  animation: modalFadeIn 0.3s;
+}
+
+body.dark-mode .orchid-detail-content {
+  background: #2d2d2d;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.detail-page-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #333;
+  margin: 30px 0 15px 0;
+  text-align: center;
+}
+
+body.dark-mode .detail-page-title {
+  color: #ffffff;
+}
+
+.detail-page-divider {
+  height: 4px;
+  width: 100px;
+  background: linear-gradient(to right, #4caf50, #81c784);
+  margin: 0 auto 40px;
+  border-radius: 2px;
+}
+
+.orchid-detail-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  margin-top: 30px;
+}
+
+.orchid-detail-image img {
+  width: 100%;
+  max-height: 500px;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.orchid-detail-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.detail-badge {
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  border-radius: 25px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detail-badge.special {
+  background-color: rgba(217, 83, 79, 0.1);
+  color: #d9534f;
+}
+
+.detail-badge.natural {
+  background-color: rgba(92, 184, 92, 0.1);
+  color: #5cb85c;
+}
+
+.info-section {
+  margin-bottom: 30px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+body.dark-mode .info-section {
+  background-color: #3a3a3a;
+}
+
+.info-section-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #4caf50;
+  padding-bottom: 8px;
+  display: inline-block;
+}
+
+body.dark-mode .info-section-title {
+  color: #ffffff;
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.detail-value {
+  font-weight: 500;
+}
+
+.rating-stars {
+  display: flex;
+  gap: 5px;
+}
+
+.star {
+  color: #f8b400;
+}
+
+.likes-count {
+  color: #e74c3c;
+  font-weight: 600;
+}
+
+.description-section {
+  margin-top: 20px;
+}
+
+.detail-description {
+  line-height: 1.8;
+  color: #444;
+  font-size: 1.05rem;
+}
+
+body.dark-mode .detail-description {
+  color: #e0e0e0;
+}
+
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #4caf50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(76, 175, 80, 0.3);
+}
+
+.back-icon {
+  font-size: 1.2rem;
+}
+
+.back-button:hover {
+  background-color: #3d9140;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 10px rgba(76, 175, 80, 0.4);
+}
+
+.orchid-detail-not-found {
+  text-align: center;
+  padding: 60px 40px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+body.dark-mode .orchid-detail-not-found {
+  background-color: #2d2d2d;
+}
+
+.orchid-detail-not-found h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 30px;
+}
+
+body.dark-mode .orchid-detail-not-found h2 {
+  color: #ffffff;
+}
+
+/* Responsive Grid */
+@media (max-width: 1200px) {
+  .orchids-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 60px 30px;
+    padding: 35px;
+  }
+  
+  .modal-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .modal-content {
+    width: 95%;
+    max-width: 700px;
+    padding: 25px;
+  }
+}
+
+@media (max-width: 900px) {
+  .orchids-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px 30px;
+    padding: 30px;
+  }
+  
+  .orchid-card {
+    min-height: 420px;
+    padding: 20px 15px;
+  }
+  
+  .modal-content {
+    width: 95%;
+    padding: 20px;
+  }
+}
+
+@media (max-width: 600px) {
+  .orchids-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 20px;
+  }
+  
+  .orchid-image {
+    height: 220px;
+  }
+  
+  .orchid-title {
+    font-size: 1.3rem;
+  }
+  
+  .modal-content {
+    padding: 15px;
+    width: 95%;
+  }
+  
+  .modal-title {
+    font-size: 1.5rem;
+  }
+  
+  .detail-label, .detail-value {
+    font-size: 0.95rem;
+  }
+}
