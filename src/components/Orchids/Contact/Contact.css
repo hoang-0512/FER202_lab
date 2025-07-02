@@ -1,10 +1,45 @@
 .contact-main-container {
-  padding: 40px 20px;
-  max-width: 1100px;
-  margin: 0 auto;
-  background-color: #fafafa;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  padding: 60px 30px;
+  max-width: 600px;
+  margin: 40px auto;
+  background: linear-gradient(135deg, #ffffff 0%, #f8faff 100%);
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+  animation: floatingForm 6s ease-in-out infinite;
+}
+
+.contact-main-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #1976d2, #42a5f5, #1976d2);
+  background-size: 200% 100%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%,
+  100% {
+    background-position: 200% 0;
+  }
+  50% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes floatingForm {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .contact-card {
@@ -111,11 +146,51 @@
 }
 
 .form-container {
-  background-color: #fff;
-  padding: 30px;
+  background: transparent;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  border: none;
+  width: 100%;
+}
+
+/* Improved form container */
+.form-container form {
+  width: 100%;
+}
+
+/* Grid spacing adjustments for consistent layout */
+.MuiGrid-container {
+  margin: 0 !important;
+  width: 100% !important;
+}
+
+.MuiGrid-item {
+  padding-top: 20px !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+.MuiGrid-item:first-child {
+  padding-top: 0 !important;
+}
+
+/* Consistent spacing between form elements */
+.form-input,
+.form-select,
+.form-textarea {
+  margin-bottom: 0; /* Remove margin since Grid provides spacing */
+}
+
+/* Checkbox container spacing */
+.MuiFormControlLabel-root {
+  margin: 0;
+  padding: 16px 20px;
+  width: 100%;
   border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-  border-top: 4px solid #4caf50;
+  background: linear-gradient(145deg, #f8f9fa, #ffffff);
+  border: 2px solid #e3f2fd;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .form-title {
@@ -142,152 +217,830 @@
 .form-input,
 .form-select,
 .form-textarea {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
-.form-input .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline,
-.form-select .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline,
-.form-textarea .MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
-  border-color: #4caf50;
+/* Beautiful input styles */
+.form-input .MuiOutlinedInput-root,
+.form-select .MuiOutlinedInput-root,
+.form-textarea .MuiOutlinedInput-root {
+  border-radius: 12px;
+  background: linear-gradient(145deg, #ffffff, #f5f7fa);
+  border: 2px solid transparent;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
 }
 
-.form-input .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline,
-.form-select
-  .MuiOutlinedInput-root.Mui-focused
-  .MuiOutlinedInput-notchedOutline,
-.form-textarea
-  .MuiOutlinedInput-root.Mui-focused
-  .MuiOutlinedInput-notchedOutline {
-  border-color: #2e7d32;
+.form-input .MuiOutlinedInput-root::before,
+.form-select .MuiOutlinedInput-root::before,
+.form-textarea .MuiOutlinedInput-root::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(25, 118, 210, 0.1),
+    transparent
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+  z-index: 0;
 }
 
-.send-button {
-  background-color: #2e7d32;
-  color: white;
-  padding: 12px 25px;
-  border-radius: 30px;
-  text-transform: uppercase;
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
+.form-input .MuiOutlinedInput-root:hover::before,
+.form-select .MuiOutlinedInput-root:hover::before,
+.form-textarea .MuiOutlinedInput-root:hover::before {
+  transform: translateX(100%);
+}
+
+.form-input .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline,
+.form-select .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline,
+.form-textarea .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline {
+  border: none;
+}
+
+.form-input .MuiOutlinedInput-input,
+.form-select .MuiSelect-select,
+.form-textarea .MuiOutlinedInput-input {
+  padding: 18px 20px;
+  font-size: 15px;
+  color: #2c3e50;
+  font-weight: 500;
+  position: relative;
+  z-index: 1;
+  background: transparent;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.send-button:hover {
-  background-color: #1b5e20;
+/* Improved input field heights for consistency */
+.form-input .MuiOutlinedInput-root,
+.form-select .MuiOutlinedInput-root {
+  min-height: 58px;
+}
+
+.form-textarea .MuiOutlinedInput-root {
+  min-height: 120px;
+}
+
+.form-input .MuiOutlinedInput-input::placeholder,
+.form-textarea .MuiOutlinedInput-input::placeholder {
+  color: #7f8c8d;
+  opacity: 1;
+  font-weight: 400;
+}
+
+/* Enhanced hover and focus effects */
+.form-input .MuiOutlinedInput-root:hover,
+.form-select .MuiOutlinedInput-root:hover,
+.form-textarea .MuiOutlinedInput-root:hover {
+  background: linear-gradient(145deg, #ffffff, #f8faff);
+  box-shadow: 0 8px 25px rgba(25, 118, 210, 0.15);
+  transform: translateY(-2px);
+}
+
+.form-input .MuiOutlinedInput-root.Mui-focused,
+.form-select .MuiOutlinedInput-root.Mui-focused,
+.form-textarea .MuiOutlinedInput-root.Mui-focused {
+  background: linear-gradient(145deg, #ffffff, #f0f4ff);
+  box-shadow: 0 12px 30px rgba(25, 118, 210, 0.2),
+    0 0 0 3px rgba(25, 118, 210, 0.1);
   transform: translateY(-3px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
 }
 
-.send-button:active {
-  transform: translateY(-1px);
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+/* Program dropdown enhanced styling */
+.form-select .MuiSelect-select {
+  color: #7f8c8d;
+  font-weight: 400;
 }
 
-.send-button-icon {
-  font-size: 20px;
+.form-select .MuiSelect-select:not(:empty) {
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+.form-select .MuiSelect-icon {
+  color: #1976d2;
   transition: transform 0.3s ease;
 }
 
+.form-select .MuiOutlinedInput-root.Mui-focused .MuiSelect-icon {
+  transform: rotate(180deg);
+}
+
+/* Enhanced checkbox and label styling */
+.MuiFormControlLabel-root {
+  margin-left: 0;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 16px 20px;
+  background: linear-gradient(145deg, #f8faff, #ffffff);
+  border-radius: 12px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.MuiFormControlLabel-root:hover {
+  background: linear-gradient(145deg, #f0f4ff, #ffffff);
+  box-shadow: 0 4px 15px rgba(25, 118, 210, 0.1);
+  transform: translateY(-1px);
+}
+
+.MuiFormControlLabel-label {
+  font-size: 15px;
+  color: #2c3e50;
+  font-weight: 500;
+  margin-left: 8px;
+}
+
+.MuiCheckbox-root {
+  padding: 8px;
+  color: #1976d2;
+}
+
+.MuiCheckbox-root.Mui-checked {
+  color: #1976d2;
+  animation: checkboxPulse 0.3s ease;
+}
+
+@keyframes checkboxPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Remove form title underline */
+.form-title::after {
+  display: none;
+}
+
+.form-title {
+  text-align: left;
+  margin-bottom: 30px;
+  color: #333;
+  font-size: 1.5rem;
+}
+
+/* Add error styles */
+.form-input .MuiFormHelperText-root.Mui-error,
+.form-select .MuiFormHelperText-root.Mui-error,
+.form-textarea .MuiFormHelperText-root.Mui-error {
+  color: #e74c3c;
+  font-weight: 500;
+  margin-top: 8px;
+  animation: errorShake 0.4s ease-in-out;
+}
+
+@keyframes errorShake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+.form-input .MuiOutlinedInput-root.Mui-error,
+.form-select .MuiOutlinedInput-root.Mui-error,
+.form-textarea .MuiOutlinedInput-root.Mui-error {
+  background: linear-gradient(145deg, #fff5f5, #ffffff);
+  box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
+  animation: errorPulse 0.5s ease-in-out;
+}
+
+@keyframes errorPulse {
+  0% {
+    box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 0 4px rgba(231, 76, 60, 0.1);
+  }
+  100% {
+    box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.2);
+  }
+}
+
+/* Success state for valid inputs */
+.form-input .MuiOutlinedInput-root:valid:not(:focus),
+.form-textarea .MuiOutlinedInput-root:valid:not(:focus) {
+  background: linear-gradient(145deg, #f0fff4, #ffffff);
+  box-shadow: 0 0 0 1px rgba(76, 175, 80, 0.3);
+}
+
+/* Send button main styling */
+.send-button {
+  background: linear-gradient(135deg, #1976d2 0%, #42a5f5 50%, #1976d2 100%);
+  background-size: 200% 100%;
+  color: white;
+  padding: 18px 40px;
+  border-radius: 16px;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 25px rgba(25, 118, 210, 0.3);
+  width: 100%;
+  margin-top: 30px;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.send-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.send-button:hover::before {
+  left: 100%;
+}
+
+.send-button:hover {
+  background-position: 100% 0;
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(25, 118, 210, 0.4);
+  letter-spacing: 3px;
+}
+
+.send-button:active {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(25, 118, 210, 0.3);
+  transition: all 0.1s ease;
+}
+
+.send-button-icon {
+  font-size: 22px;
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
 .send-button:hover .send-button-icon {
+  transform: translateX(6px) rotate(15deg);
+}
+
+/* Loading state for button */
+@keyframes buttonLoading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.send-button.loading {
+  background: linear-gradient(
+    90deg,
+    #1976d2,
+    #42a5f5,
+    #1976d2,
+    #42a5f5,
+    #1976d2
+  );
+  background-size: 300% 100%;
+  animation: buttonLoading 1.5s linear infinite;
+  cursor: not-allowed;
+}
+
+/* Focus ring for accessibility */
+.form-input .MuiOutlinedInput-root:focus-within,
+.form-select .MuiOutlinedInput-root:focus-within,
+.form-textarea .MuiOutlinedInput-root:focus-within {
+  outline: 2px solid rgba(25, 118, 210, 0.4);
+  outline-offset: 2px;
+}
+
+/* Enhanced dropdown menu */
+.MuiPaper-root.MuiMenu-paper {
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(25, 118, 210, 0.1);
+  margin-top: 8px;
+}
+
+.MuiMenuItem-root {
+  padding: 12px 20px;
+  transition: all 0.2s ease;
+  border-radius: 8px;
+  margin: 4px 8px;
+}
+
+.MuiMenuItem-root:hover {
+  background: linear-gradient(145deg, #f0f4ff, #ffffff);
+  color: #1976d2;
   transform: translateX(4px);
 }
 
-/* Dark mode styles */
+/* Smooth transitions between light and dark mode */
+.contact-main-container,
+.contact-main-container *,
+.form-input .MuiOutlinedInput-root,
+.form-select .MuiOutlinedInput-root,
+.form-textarea .MuiOutlinedInput-root,
+.MuiFormControlLabel-root,
+.send-button {
+  transition: background 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Enhanced theme toggle animation */
+.theme-transition .contact-main-container,
+.theme-transition .contact-main-container * {
+  transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+
+/* Pulse animation for mode switching */
+@keyframes themeSwitch {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.02);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.theme-transition .contact-main-container {
+  animation: themeSwitch 0.6s ease-in-out;
+}
+
+/* Enhanced floating animation for dark mode */
 body.dark-mode .contact-main-container {
-  background-color: #222;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  animation: floatingFormDark 8s ease-in-out infinite;
 }
 
-body.dark-mode .contact-title {
-  color: #81c784;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+@keyframes floatingFormDark {
+  0%,
+  100% {
+    transform: translateY(0px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(255, 255, 255, 0.05);
+  }
+  50% {
+    transform: translateY(-12px);
+    box-shadow: 0 30px 50px rgba(0, 0, 0, 0.5),
+      0 0 0 1px rgba(255, 255, 255, 0.1);
+  }
 }
 
-body.dark-mode .contact-subtitle {
-  color: #bbb;
+/* Glowing effect for dark mode inputs on focus */
+body.dark-mode .form-input .MuiOutlinedInput-root.Mui-focused,
+body.dark-mode .form-select .MuiOutlinedInput-root.Mui-focused,
+body.dark-mode .form-textarea .MuiOutlinedInput-root.Mui-focused {
+  position: relative;
 }
 
-body.dark-mode .contact-info-container {
-  background-color: #2a2a2a;
-  border-left: 4px solid #81c784;
+body.dark-mode .form-input .MuiOutlinedInput-root.Mui-focused::after,
+body.dark-mode .form-select .MuiOutlinedInput-root.Mui-focused::after,
+body.dark-mode .form-textarea .MuiOutlinedInput-root.Mui-focused::after {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 14px;
+  background: linear-gradient(45deg, #bb86fc, #6200ea, #bb86fc);
+  z-index: -1;
+  animation: glowPulse 2s ease-in-out infinite;
 }
 
-body.dark-mode .contact-info-container:hover {
-  background-color: #333;
+@keyframes glowPulse {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
 }
 
-body.dark-mode .form-container {
-  background-color: #2a2a2a;
-  border-top: 4px solid #81c784;
+/* Dark mode shimmer animation */
+body.dark-mode .contact-main-container::before {
+  animation: shimmerDark 4s ease-in-out infinite;
 }
 
-body.dark-mode .info-label,
-body.dark-mode .info-title,
-body.dark-mode .form-title {
-  color: #e0e0e0;
+@keyframes shimmerDark {
+  0%,
+  100% {
+    background-position: 200% 0;
+  }
+  50% {
+    background-position: -200% 0;
+  }
 }
 
-body.dark-mode .info-value {
-  color: #bbb;
+/* Enhanced button glow effect in dark mode */
+body.dark-mode .send-button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 16px;
+  background: linear-gradient(
+    45deg,
+    transparent,
+    rgba(187, 134, 252, 0.1),
+    transparent
+  );
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-body.dark-mode .info-title::after,
-body.dark-mode .form-title::after {
-  background-color: #81c784;
+body.dark-mode .send-button:hover::after {
+  opacity: 1;
 }
 
+/* Enhanced Dark mode styles */
+body.dark-mode .contact-main-container {
+  background: linear-gradient(135deg, #1e1e1e 0%, #2d2d30 100%);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .contact-main-container::before {
+  background: linear-gradient(90deg, #bb86fc, #6200ea, #bb86fc);
+}
+
+/* Dark mode input styles */
+body.dark-mode .form-input .MuiOutlinedInput-root,
+body.dark-mode .form-select .MuiOutlinedInput-root,
+body.dark-mode .form-textarea .MuiOutlinedInput-root {
+  background: linear-gradient(145deg, #2d2d30, #1e1e1e);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+body.dark-mode .form-input .MuiOutlinedInput-root::before,
+body.dark-mode .form-select .MuiOutlinedInput-root::before,
+body.dark-mode .form-textarea .MuiOutlinedInput-root::before {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(187, 134, 252, 0.15),
+    transparent
+  );
+}
+
+body.dark-mode .form-input .MuiOutlinedInput-input,
+body.dark-mode .form-select .MuiSelect-select,
+body.dark-mode .form-textarea .MuiOutlinedInput-input {
+  color: #ffffff;
+}
+
+body.dark-mode .form-input .MuiOutlinedInput-input::placeholder,
+body.dark-mode .form-textarea .MuiOutlinedInput-input::placeholder {
+  color: #aaaaaa;
+}
+
+body.dark-mode .form-input .MuiOutlinedInput-root:hover,
+body.dark-mode .form-select .MuiOutlinedInput-root:hover,
+body.dark-mode .form-textarea .MuiOutlinedInput-root:hover {
+  background: linear-gradient(145deg, #333337, #242428);
+  box-shadow: 0 8px 25px rgba(187, 134, 252, 0.2);
+  border-color: rgba(187, 134, 252, 0.3);
+}
+
+body.dark-mode .form-input .MuiOutlinedInput-root.Mui-focused,
+body.dark-mode .form-select .MuiOutlinedInput-root.Mui-focused,
+body.dark-mode .form-textarea .MuiOutlinedInput-root.Mui-focused {
+  background: linear-gradient(145deg, #333337, #1e1e24);
+  box-shadow: 0 12px 30px rgba(187, 134, 252, 0.25),
+    0 0 0 3px rgba(187, 134, 252, 0.15);
+  border-color: rgba(187, 134, 252, 0.5);
+}
+
+/* Dark mode dropdown */
+body.dark-mode .form-select .MuiSelect-select {
+  color: #aaaaaa;
+}
+
+body.dark-mode .form-select .MuiSelect-select:not(:empty) {
+  color: #ffffff;
+}
+
+body.dark-mode .form-select .MuiSelect-icon {
+  color: #bb86fc;
+}
+
+body.dark-mode .MuiPaper-root.MuiMenu-paper {
+  background: #2d2d30;
+  border: 1px solid rgba(187, 134, 252, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .MuiMenuItem-root {
+  color: #ffffff;
+  background: transparent;
+}
+
+body.dark-mode .MuiMenuItem-root:hover {
+  background: linear-gradient(145deg, #3a3a3e, #2d2d30);
+  color: #bb86fc;
+}
+
+/* Dark mode checkbox */
+body.dark-mode .MuiFormControlLabel-root {
+  background: linear-gradient(145deg, #2d2d30, #1e1e1e);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.dark-mode .MuiFormControlLabel-root:hover {
+  background: linear-gradient(145deg, #333337, #242428);
+  box-shadow: 0 4px 15px rgba(187, 134, 252, 0.15);
+  border-color: rgba(187, 134, 252, 0.3);
+}
+
+body.dark-mode .MuiFormControlLabel-label {
+  color: #ffffff;
+}
+
+body.dark-mode .MuiCheckbox-root {
+  color: #bb86fc;
+}
+
+body.dark-mode .MuiCheckbox-root.Mui-checked {
+  color: #bb86fc;
+}
+
+/* Dark mode button */
 body.dark-mode .send-button {
-  background-color: #558b2f;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(135deg, #bb86fc 0%, #6200ea 50%, #bb86fc 100%);
+  box-shadow: 0 8px 25px rgba(187, 134, 252, 0.4);
 }
 
 body.dark-mode .send-button:hover {
-  background-color: #33691e;
+  box-shadow: 0 15px 35px rgba(187, 134, 252, 0.5);
+  transform: translateY(-4px);
 }
 
-/* Responsive styles */
+body.dark-mode .send-button.loading {
+  background: linear-gradient(
+    90deg,
+    #bb86fc,
+    #6200ea,
+    #bb86fc,
+    #6200ea,
+    #bb86fc
+  );
+}
+
+/* Dark mode error states */
+body.dark-mode .form-input .MuiOutlinedInput-root.Mui-error,
+body.dark-mode .form-select .MuiOutlinedInput-root.Mui-error,
+body.dark-mode .form-textarea .MuiOutlinedInput-root.Mui-error {
+  background: linear-gradient(145deg, #3d1a1a, #2d1414);
+  box-shadow: 0 0 0 2px rgba(244, 67, 54, 0.3);
+  border-color: rgba(244, 67, 54, 0.5);
+}
+
+body.dark-mode .form-input .MuiFormHelperText-root.Mui-error,
+body.dark-mode .form-select .MuiFormHelperText-root.Mui-error,
+body.dark-mode .form-textarea .MuiFormHelperText-root.Mui-error {
+  color: #ff6b6b;
+}
+
+/* Dark mode success states */
+body.dark-mode .form-input .MuiOutlinedInput-root:valid:not(:focus),
+body.dark-mode .form-textarea .MuiOutlinedInput-root:valid:not(:focus) {
+  background: linear-gradient(145deg, #1a3d1a, #142d14);
+  box-shadow: 0 0 0 1px rgba(76, 175, 80, 0.4);
+}
+
+/* Dark mode focus accessibility */
+body.dark-mode .form-input .MuiOutlinedInput-root:focus-within,
+body.dark-mode .form-select .MuiOutlinedInput-root:focus-within,
+body.dark-mode .form-textarea .MuiOutlinedInput-root:focus-within {
+  outline: 2px solid rgba(187, 134, 252, 0.5);
+  outline-offset: 2px;
+}
+
+/* Enhanced Responsive styles for both light and dark modes */
 @media (max-width: 768px) {
-  .contact-title {
-    font-size: 2.2rem;
+  .contact-main-container {
+    margin: 20px auto;
+    padding: 40px 24px;
+    max-width: 90%;
   }
 
-  .contact-info-container,
-  .form-container {
-    padding: 20px;
+  body.dark-mode .contact-main-container {
+    margin: 20px auto;
+    padding: 40px 24px;
   }
 
-  .info-section {
-    margin-bottom: 20px;
+  .send-button {
+    padding: 16px 32px;
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    min-width: 180px;
+    max-width: 250px;
   }
 
-  .form-title,
-  .info-title {
-    font-size: 1.3rem;
-    margin-bottom: 20px;
+  .form-input .MuiOutlinedInput-input,
+  .form-select .MuiSelect-select,
+  .form-textarea .MuiOutlinedInput-input {
+    padding: 14px 16px;
+    font-size: 14px;
+  }
+
+  .form-input .MuiOutlinedInput-root,
+  .form-select .MuiOutlinedInput-root {
+    min-height: 52px;
+  }
+
+  .form-textarea .MuiOutlinedInput-root {
+    min-height: 100px;
+  }
+
+  .MuiFormControlLabel-root {
+    padding: 12px 16px;
+  }
+
+  .MuiFormControlLabel-label {
+    font-size: 14px;
+  }
+
+  .MuiGrid-item {
+    padding-top: 16px !important;
   }
 }
 
 @media (max-width: 480px) {
   .contact-main-container {
-    padding: 25px 15px;
+    margin: 10px auto;
+    padding: 30px 20px;
+    max-width: 95%;
+    border-radius: 16px;
   }
 
-  .contact-title {
-    font-size: 1.8rem;
-  }
-
-  .contact-subtitle {
-    font-size: 0.95rem;
+  body.dark-mode .contact-main-container {
+    margin: 10px auto;
+    padding: 30px 20px;
   }
 
   .send-button {
-    width: 100%;
-    padding: 10px 15px;
+    padding: 14px 24px;
+    font-size: 13px;
+    letter-spacing: 1px;
+    border-radius: 12px;
+    min-width: 160px;
+    max-width: 200px;
+  }
+
+  .form-input .MuiOutlinedInput-root,
+  .form-select .MuiOutlinedInput-root,
+  .form-textarea .MuiOutlinedInput-root {
+    border-radius: 10px;
+  }
+
+  .form-input .MuiOutlinedInput-root,
+  .form-select .MuiOutlinedInput-root {
+    min-height: 48px;
+  }
+
+  .form-textarea .MuiOutlinedInput-root {
+    min-height: 90px;
+  }
+
+  .MuiFormControlLabel-root {
+    padding: 10px 14px;
+    border-radius: 10px;
+  }
+
+  .form-input .MuiOutlinedInput-input,
+  .form-select .MuiSelect-select,
+  .form-textarea .MuiOutlinedInput-input {
+    padding: 12px 14px;
+    font-size: 13px;
+  }
+
+  .MuiGrid-item {
+    padding-top: 14px !important;
+  }
+}
+
+@media (max-width: 360px) {
+  .contact-main-container {
+    margin: 5px auto;
+    padding: 25px 16px;
+    max-width: 98%;
+  }
+
+  body.dark-mode .contact-main-container {
+    margin: 5px auto;
+    padding: 25px 16px;
+  }
+
+  .send-button {
+    padding: 12px 20px;
+    font-size: 12px;
+  }
+}
+
+/* Enhanced hover effects for mobile devices */
+@media (hover: none) and (pointer: coarse) {
+  .form-input .MuiOutlinedInput-root:hover,
+  .form-select .MuiOutlinedInput-root:hover,
+  .form-textarea .MuiOutlinedInput-root:hover {
+    transform: none;
+  }
+
+  .MuiFormControlLabel-root:hover {
+    transform: none;
+  }
+
+  .send-button:hover {
+    transform: none;
+    letter-spacing: 2px;
+  }
+
+  body.dark-mode .send-button:hover {
+    transform: none;
+  }
+}
+
+/* Improved dark mode for small screens */
+@media (max-width: 768px) {
+  body.dark-mode .form-input .MuiOutlinedInput-root:focus-within,
+  body.dark-mode .form-select .MuiOutlinedInput-root:focus-within,
+  body.dark-mode .form-textarea .MuiOutlinedInput-root:focus-within {
+    outline-width: 1px;
+    outline-offset: 1px;
+  }
+}
+
+/* Send button container styling for perfect centering */
+.MuiGrid-item:last-child {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-top: 8px !important;
+}
+
+/* Ensure the send button has optimal styling */
+.send-button {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.send-button:not(.loading):hover {
+  background-position: -200% 0;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(25, 118, 210, 0.3);
+}
+
+.send-button.loading {
+  background: linear-gradient(135deg, #64b5f6 0%, #1976d2 100%);
+  animation: loadingPulse 2s ease-in-out infinite;
+}
+
+@keyframes loadingPulse {
+  0%,
+  100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
   }
 }

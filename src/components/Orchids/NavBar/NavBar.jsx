@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./NavBar.css";
 
 const NavBar = ({ onSearch }) => {
@@ -7,6 +7,7 @@ const NavBar = ({ onSearch }) => {
     () => localStorage.getItem("darkMode") === "true"
   );
   const [searchTerm, setSearchTerm] = useState("");
+  const location = useLocation();
   useEffect(() => {
     // Xử lý smooth transition cho chế độ dark mode
     if (darkMode) {
@@ -52,14 +53,29 @@ const NavBar = ({ onSearch }) => {
         </div>
 
         <div className="navbar__nav">
-          <Link to="/" className="nav-link">
-            Home
+          <Link
+            to="/"
+            className={`navbar__nav-button ${
+              location.pathname === "/" ? "active" : ""
+            }`}
+          >
+            <span>Home</span>
           </Link>
-          <Link to="/about" className="nav-link">
-            About
+          <Link
+            to="/about"
+            className={`navbar__nav-button ${
+              location.pathname === "/about" ? "active" : ""
+            }`}
+          >
+            <span>About</span>
           </Link>
-          <Link to="/contact" className="nav-link">
-            Contact
+          <Link
+            to="/contact"
+            className={`navbar__nav-button ${
+              location.pathname === "/contact" ? "active" : ""
+            }`}
+          >
+            <span>Contact</span>
           </Link>
         </div>
 
