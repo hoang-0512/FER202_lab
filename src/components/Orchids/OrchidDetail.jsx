@@ -97,21 +97,22 @@ const OrchidDetail = ({ orchids }) => {
                 </span>
               </div>
             </div>
-
-            <div className="info-section description-section">
-              <h3 className="info-section-title">Mô tả chi tiết</h3>
-              <p className="detail-description">
-                Đây là loài hoa lan {orchid.name} có màu {orchid.color}, xuất xứ
-                từ {orchid.origin}, thuộc loại {orchid.category}.
-                {orchid.isSpecial
-                  ? " Đây là một loài hoa lan đặc biệt với đặc tính quý hiếm. "
-                  : " "}
-                {orchid.isNatural
-                  ? "Loài lan này được trồng bằng phương pháp canh tác hiện đại."
-                  : "Loài lan này được trồng bằng phương pháp canh tác hiện đại."}
-              </p>
-            </div>
           </div>
+        </div>
+
+        {/* Description section moved outside grid for full width */}
+        <div className="info-section description-section">
+          <h3 className="info-section-title">Mô tả chi tiết</h3>
+          <p className="detail-description">
+            Đây là loài hoa lan {orchid.name} có màu {orchid.color}, xuất xứ từ{" "}
+            {orchid.origin}, thuộc loại {orchid.category}.
+            {orchid.isSpecial
+              ? " Đây là một loài hoa lan đặc biệt với đặc tính quý hiếm. "
+              : " "}
+            {orchid.isNatural
+              ? "Loài lan này được trồng bằng phương pháp canh tác hiện đại."
+              : "Loài lan này được trồng bằng phương pháp canh tác hiện đại."}
+          </p>
         </div>
       </div>
     </div>

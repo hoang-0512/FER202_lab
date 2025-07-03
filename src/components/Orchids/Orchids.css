@@ -423,6 +423,12 @@ body.dark-mode .detail-page-title {
   margin-top: 20px;
 }
 
+/* Ensure description section spans full width when placed in grid */
+.orchid-detail-grid > .info-section.description-section {
+  grid-column: 1 / -1;
+  margin-top: 30px;
+}
+
 .orchid-detail-image {
   display: flex;
   flex-direction: column;
@@ -489,6 +495,16 @@ body.dark-mode .detail-page-title {
 
 .info-section.description-section {
   border-left: 4px solid #2196f3;
+  width: 100% !important;
+  box-sizing: border-box;
+}
+
+/* Ensure description always spans full width in any container */
+.description-full-width {
+  width: 100% !important;
+  grid-column: 1 / -1 !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
 }
 
 body.dark-mode .info-section {
@@ -562,6 +578,24 @@ body.dark-mode .detail-description {
   color: #e0e0e0;
 }
 
+/* Description section styling when placed outside grid */
+.orchid-detail-content > .info-section.description-section {
+  width: 100%;
+  margin-top: 30px;
+  padding: 25px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border: 1px solid #e3f2fd;
+  border-left: 4px solid #2196f3;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(33, 150, 243, 0.1);
+}
+
+body.dark-mode .orchid-detail-content > .info-section.description-section {
+  background: linear-gradient(135deg, #3a3a3a 0%, #2d2d2d 100%);
+  border: 1px solid rgba(100, 181, 246, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
 /* Responsive Grid */
 @media (max-width: 1200px) {
   .orchids-grid {
@@ -633,6 +667,18 @@ body.dark-mode .detail-description {
 @media (max-width: 768px) {
   .orchid-detail-grid {
     grid-template-columns: 1fr;
+  }
+
+  .orchid-detail-grid > .info-section.description-section {
+    grid-column: 1;
+    margin-top: 20px;
+    width: 100% !important;
+  }
+
+  .info-section.description-section {
+    width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
   }
 
   .orchid-detail-content {
