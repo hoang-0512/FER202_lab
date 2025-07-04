@@ -18,7 +18,7 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  min-height: 450px;
+  min-height: 480px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -46,10 +46,14 @@
   color: #333;
   margin: 0 0 15px 0;
   width: 100%;
-  height: 30px;
+  min-height: 60px;
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
-  white-space: nowrap;
   transition: color 0.3s ease;
 }
 
@@ -423,7 +427,7 @@ body.dark-mode .detail-page-title {
   margin-top: 20px;
 }
 
-/* Ensure description section spans full width when placed in grid */
+
 .orchid-detail-grid > .info-section.description-section {
   grid-column: 1 / -1;
   margin-top: 30px;
@@ -499,7 +503,7 @@ body.dark-mode .detail-page-title {
   box-sizing: border-box;
 }
 
-/* Ensure description always spans full width in any container */
+
 .description-full-width {
   width: 100% !important;
   grid-column: 1 / -1 !important;
@@ -578,7 +582,7 @@ body.dark-mode .detail-description {
   color: #e0e0e0;
 }
 
-/* Description section styling when placed outside grid */
+
 .orchid-detail-content > .info-section.description-section {
   width: 100%;
   margin-top: 30px;
@@ -647,6 +651,7 @@ body.dark-mode .orchid-detail-content > .info-section.description-section {
 
   .orchid-title {
     font-size: 1.3rem;
+    min-height: 50px;
   }
 
   .modal-content {

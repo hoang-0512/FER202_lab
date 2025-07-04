@@ -6,7 +6,7 @@ const OrchidDetail = ({ orchids }) => {
   const { id } = useParams();
   const navigate = useNavigate();
 
-  // Find the orchid with the given ID
+  // Find the orchid by ID
   const orchid = orchids.find((o, index) => index.toString() === id);
 
   // Go back to the home page

@@ -181,16 +181,7 @@
   width: 220px;
   transition: all 0.3s ease;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Dark mode styles cho input */
-body.dark-mode .navbar__search input {
-  background-color: rgba(255, 255, 255, 0.15);
-  color: white;
-}
-
-body.dark-mode .navbar__search input::placeholder {
-  color: rgba(255, 255, 255, 0.7);
+  color: #333;
 }
 
 /* Focus styles */
@@ -199,10 +190,37 @@ body.dark-mode .navbar__search input::placeholder {
   width: 250px;
   background-color: #ffffff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  color: #333 !important;
+  caret-color: #333;
+}
+
+/* Light mode text selection */
+.navbar__search input::selection {
+  background-color: rgba(76, 175, 80, 0.3);
+  color: #333;
+}
+
+/* Dark mode styles cho input */
+body.dark-mode .navbar__search input {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: white !important;
+  caret-color: white;
+}
+
+body.dark-mode .navbar__search input::placeholder {
+  color: rgba(255, 255, 255, 0.7) !important;
 }
 
 body.dark-mode .navbar__search input:focus {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.25);
+  color: white !important;
+  caret-color: white;
+}
+
+/* Text selection styling */
+body.dark-mode .navbar__search input::selection {
+  background-color: rgba(187, 134, 252, 0.3);
+  color: white;
 }
 
 .search-icon {
@@ -212,20 +230,6 @@ body.dark-mode .navbar__search input:focus {
   transform: translateY(-50%);
   color: #666;
   pointer-events: none;
-}
-
-/* Dark mode styles */
-body.dark-mode .navbar__search input {
-  background-color: rgba(255, 255, 255, 0.15);
-  color: white;
-}
-
-body.dark-mode .navbar__search input::placeholder {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-body.dark-mode .navbar__search input:focus {
-  background-color: rgba(255, 255, 255, 0.2);
 }
 
 body.dark-mode .search-icon {
@@ -408,16 +412,6 @@ body.dark-mode .navbar__nav button:active,
 body.dark-mode .navbar__dark-mode-toggle button:active {
   transform: translateY(-1px);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-}
-
-body.dark-mode .navbar__search input {
-  background-color: #2d2d2d;
-  color: #ffffff;
-  border: 1px solid #404040;
-}
-
-body.dark-mode .navbar__search input::placeholder {
-  color: #888888;
 }
 
 /* Theme transition class */

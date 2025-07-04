@@ -56,7 +56,6 @@ h1 {
   color: #888;
 }
 
-/* Add this to the relevant container styles */
 .container {
   background-color: #ffffff; /* White background */
   padding: 20px;
@@ -64,7 +63,7 @@ h1 {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
 
-/* Dark mode styles cho toàn bộ trang */
+
 body.dark-mode {
   background-color: #1a1a1a;
   transition: background-color 0.3s ease;
@@ -74,7 +73,7 @@ body.dark-mode .chids-container {
   background-color: #1a1a1a;
 }
 
-/* Preserve navbar blue color in both modes */
+
 .navbar {
   background-color: #1e90ff !important;
 }
@@ -88,7 +87,7 @@ body.dark-mode .orchids-grid {
   background-color: #1a1a1a;
   transition: background-color 0.1s ease;
 }
-/* Dark mode styles for content only */
+
 body.dark-mode .orchid-card {
   background: #2d2d2d;
   color: #ffffff;
@@ -96,13 +95,13 @@ body.dark-mode .orchid-card {
   box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
   transition: all 0.1s ease;
 }
-/* Đảm bảo transition mượt mà cho container */
+
 body.dark-mode .orchids-container {
   background-color: #1a1a1a;
   transition: background-color 0.1s ease;
 }
 
-/* Giữ nguyên màu cho special và natural badges */
+
 body.dark-mode .orchid-card p.special {
   color: #ff6b6b;
 }
@@ -111,7 +110,7 @@ body.dark-mode .orchid-card p.natural {
   color: #69db7c;
 }
 
-/* Trong App.css */
+
 * {
   transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
 }

@@ -15,8 +15,10 @@ import {
   Paper,
   Fade,
   Grow,
+  Box,
 } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
+import orchidData from "../../../data/ListOfOrchids";
 import "./Contact.css";
 
 const Contact = () => {
@@ -33,27 +35,27 @@ const Contact = () => {
     },
     validationSchema: Yup.object({
       name: Yup.string()
-        .required("Required.")
-        .min(2, "Must be 2 characters or more"),
-      email: Yup.string().required("Required.").email("Invalid email"),
-      phone: Yup.number().integer().typeError("Please enter a valid number"),
+        .required("Bắt buộc.")
+        .min(2, "Phải có ít nhất 2 ký tự"),
+      email: Yup.string().required("Bắt buộc.").email("Email không hợp lệ"),
+      phone: Yup.number().integer().typeError("Vui lòng nhập số điện thoại hợp lệ"),
       program: Yup.number()
         .integer()
-        .min(1, "Please select a program.")
-        .typeError("Please select a program."),
+        .min(1, "Vui lòng chọn loại hoa lan.")
+        .typeError("Vui lòng chọn loại hoa lan."),
       message: Yup.string()
-        .required("Required.")
-        .min(10, "Must be 10 characters or more"),
+        .required("Bắt buộc.")
+        .min(10, "Phải có ít nhất 10 ký tự"),
       agree: Yup.boolean().oneOf(
         [true],
-        "The terms and conditions must be accepted."
+        "Bạn phải đồng ý với các điều khoản và điều kiện."
       ),
     }),
     onSubmit: async (values) => {
       setIsSubmitting(true);
       // Simulate API call
       setTimeout(() => {
-        alert("Message sent successfully! 🎉");
+        alert("Tin nhắn đã được gửi thành công! 🌸 Chúng tôi sẽ liên hệ với bạn sớm nhất có thể.");
         setIsSubmitting(false);
         formik.resetForm();
       }, 2000);
@@ -61,9 +63,30 @@ const Contact = () => {
   });
 
   return (
-    <Container maxWidth="sm" sx={{ mt: 6, mb: 6 }}>
-      <Fade in={true} timeout={800}>
-        <Paper elevation={0} className="contact-main-container">
+    <div className="contact-page">
+      {/* Header với ảnh hoa lan */}
+      <Fade in={true} timeout={600}>
+        <Box className="contact-header">
+          <div className="contact-hero-image">
+            <img
+              src={orchidData.find(orchid => orchid.id === "14").image}
+              alt="Lan Trắng Tinh Khôi - Liên hệ với chúng tôi"
+            />
+          </div>
+          <div className="contact-hero-content">
+            <Typography variant="h3" className="contact-title">
+              Liên Hệ Với Chúng Tôi
+            </Typography>
+            <Typography variant="h6" className="contact-subtitle">
+              Hãy để lại thông tin để được tư vấn về hoa lan tốt nhất
+            </Typography>
+          </div>
+        </Box>
+      </Fade>
+
+      <Container maxWidth="sm" sx={{ mt: 4, mb: 6 }}>
+        <Fade in={true} timeout={800}>
+          <Paper elevation={0} className="contact-main-container">
           <div className="form-container">
             <form onSubmit={formik.handleSubmit}>
               <Grid container spacing={3}>
@@ -71,7 +94,7 @@ const Contact = () => {
                   <Grow in={true} timeout={600}>
                     <TextField
                       fullWidth
-                      placeholder="Name"
+                      placeholder="Họ và tên"
                       name="name"
                       value={formik.values.name}
                       onChange={formik.handleChange}
@@ -110,7 +133,7 @@ const Contact = () => {
                   <Grow in={true} timeout={1000}>
                     <TextField
                       fullWidth
-                      placeholder="Phone"
+                      placeholder="Số điện thoại"
                       name="phone"
                       value={formik.values.phone}
                       onChange={formik.handleChange}
@@ -146,33 +169,33 @@ const Contact = () => {
                           if (selected === 0) {
                             return (
                               <span style={{ color: "#7f8c8d" }}>
-                                Program of Study
+                                Loại hoa lan quan tâm
                               </span>
                             );
                           }
                           const programs = [
                             "",
-                            "Software Engineering",
-                            "Information System",
-                            "Information Assurance",
-                            "Internet of Things",
-                            "Artificial Intelligence",
-                            "Digital Art & Design",
+                            "Lan Hồ Điệp (Phalaenopsis)",
+                            "Lan Cattleya",
+                            "Lan Dendrobium", 
+                            "Lan Vanda",
+                            "Lan Cymbidium",
+                            "Tất cả các loại",
                           ];
                           return programs[selected];
                         }}
                       >
                         <MenuItem value={0} disabled>
                           <span style={{ color: "#7f8c8d" }}>
-                            Please select
+                            Vui lòng chọn
                           </span>
                         </MenuItem>
-                        <MenuItem value={1}>Software Engineering</MenuItem>
-                        <MenuItem value={2}>Information System</MenuItem>
-                        <MenuItem value={3}>Information Assurance</MenuItem>
-                        <MenuItem value={4}>Internet of Things</MenuItem>
-                        <MenuItem value={5}>Artificial Intelligence</MenuItem>
-                        <MenuItem value={6}>Digital Art & Design</MenuItem>
+                        <MenuItem value={1}>Lan Hồ Điệp (Phalaenopsis)</MenuItem>
+                        <MenuItem value={2}>Lan Cattleya</MenuItem>
+                        <MenuItem value={3}>Lan Dendrobium</MenuItem>
+                        <MenuItem value={4}>Lan Vanda</MenuItem>
+                        <MenuItem value={5}>Lan Cymbidium</MenuItem>
+                        <MenuItem value={6}>Tất cả các loại</MenuItem>
                       </Select>
                       {formik.touched.program && formik.errors.program && (
                         <Typography variant="caption" color="error">
@@ -187,7 +210,7 @@ const Contact = () => {
                   <Grow in={true} timeout={1400}>
                     <TextField
                       fullWidth
-                      placeholder="Message"
+                      placeholder="Tin nhắn của bạn về hoa lan..."
                       multiline
                       name="message"
                       rows={4}
@@ -219,7 +242,7 @@ const Contact = () => {
                           size="small"
                         />
                       }
-                      label="Agree to terms and conditions"
+                      label="Đồng ý với các điều khoản và điều kiện"
                     />
                   </Grow>
                   {formik.touched.agree && formik.errors.agree && (
@@ -256,7 +279,7 @@ const Contact = () => {
                         maxWidth: "300px",
                       }}
                     >
-                      {isSubmitting ? "SENDING..." : "SEND"}
+                      {isSubmitting ? "ĐANG GỬI..." : "GỬI TIN NHẮN"}
                     </Button>
                   </Grow>
                 </Grid>
@@ -266,6 +289,7 @@ const Contact = () => {
         </Paper>
       </Fade>
     </Container>
+    </div>
   );
 };
 
